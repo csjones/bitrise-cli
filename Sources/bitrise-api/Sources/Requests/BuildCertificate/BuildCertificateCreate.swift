@@ -32,11 +32,12 @@ extension API.BuildCertificate {
 
             public var body: V0BuildCertificateUploadParams
 
-            public init(body: V0BuildCertificateUploadParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0BuildCertificateUploadParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: BuildCertificateCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: BuildCertificateCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.BuildCertificate {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0BuildCertificateResponseModel
 
             /** Created */

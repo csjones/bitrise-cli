@@ -32,11 +32,12 @@ extension API.GenericProjectFile {
 
             public var body: V0ProjectFileStorageUploadParams
 
-            public init(body: V0ProjectFileStorageUploadParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0ProjectFileStorageUploadParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: GenericProjectFilesCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: GenericProjectFilesCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.GenericProjectFile {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0ProjectFileStorageResponseModel
 
             /** Created */

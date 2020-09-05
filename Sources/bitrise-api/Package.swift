@@ -1,18 +1,22 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.1
 
 import PackageDescription
 
 let package = Package(
     name: "API",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6),
+    ],
     products: [
         .library(name: "API", targets: ["API"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .exact("4.9.0")),
     ],
     targets: [
         .target(name: "API", dependencies: [
-          "Alamofire",
         ], path: "Sources")
     ]
 )

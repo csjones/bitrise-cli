@@ -32,11 +32,12 @@ extension API.AvatarCandidate {
 
             public var body: V0AvatarCandidateCreateBulkParams
 
-            public init(body: V0AvatarCandidateCreateBulkParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0AvatarCandidateCreateBulkParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: AvatarCandidateCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: AvatarCandidateCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.AvatarCandidate {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0AvatarCandidateCreateResponseItems
 
             /** Created */

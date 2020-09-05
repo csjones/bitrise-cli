@@ -50,7 +50,7 @@ extension API.Builds {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0BuildShowResponseModel
 
             /** OK */

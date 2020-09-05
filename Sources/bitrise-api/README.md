@@ -42,36 +42,48 @@ public init(baseURL: String, sessionManager: SessionManager = .default, defaultH
 
 - `baseURL`: The base url that every request `path` will be appended to
 - `behaviours`: A list of [Request Behaviours](#requestbehaviour) to add to every request
-- `sessionManager`: An `Alamofire.SessionManager` that can be customized
+- `session`: An `URLSession` that can be configured ahead of time
 - `defaultHeaders`: Headers that will be applied to every request
-- `decodingQueue`: The `DispatchQueue` to decode responses on
 
 #### Making a request
-To make a request first initialize a [Request](#request) and then pass it to `makeRequest`. The `complete` closure will be called with an `APIResponse`
+To make a request first initialize a [Request](#request) and then pass it to `makeRequest`, which will return an `APIResponsePublisher<T>`, which will eventually publish a single `APIResponse<T>`, successful or failed.
 
 ```swift
-func makeRequest<T>(_ request: APIRequest<T>, behaviours: [RequestBehaviour] = [], queue: DispatchQueue = DispatchQueue.main, complete: @escaping (APIResponse<T>) -> Void) -> Request? {
+func makeRequest<T>(_ request: APIRequest<T>, behaviours: [RequestBehaviour] = []) -> APIResponsePublisher<T>
 ```
 
-Example request (that is not neccessarily in this api):
+There is also a higher level shortcut `call<T>` that will publish the service's success type, or error with an `APIClientError` or one of the service's failure types.
+
+Example request that can be run from the command line (that is not neccessarily in this api):
 
 ```swift
+import Combine
+import Dispatch
+import Foundation
 
-let getUserRequest = API.User.GetUser.Request(id: 123)
-let apiClient = APIClient.default
+/// Something we can wait on at the very end of the script.
+let done = DispatchWorkItem {}
 
-apiClient.makeRequest(getUserRequest) { apiResponse in
-    switch apiResponse {
-        case .result(let apiResponseValue):
-        	if let user = apiResponseValue.success {
-        		print("GetUser returned user \(user)")
-        	} else {
-        		print("GetUser returned \(apiResponseValue)")
-        	}
-        case .error(let apiError):
-        	print("GetUser failed with \(apiError)")
-    }
-}
+APIClient.default
+    .call(API.User.GetUser.Request(id: 123))
+    .receive(
+        subscriber: Subscribers.Sink(
+            receiveCompletion: { completion in
+                switch completion {
+                    case .failure(let error):
+                        print("GetUser failed with \(error)")
+                    case .finished:
+                        print("Finished")
+                }
+                DispatchQueue.global().async(execute: done)
+            },
+            receiveValue: { user in
+                print("GetUser returned user \(user)")
+            }
+        )
+    )
+
+done.wait()
 ```
 
 Each [Request](#request) also has a `makeRequest` convenience function that uses `API.shared`.
@@ -84,7 +96,7 @@ The `APIResponse` that gets passed to the completion closure contains the follow
 - `urlRequest`: The `URLRequest` used to send the request
 - `urlResponse`: The `HTTPURLResponse` that was returned by the request
 - `data`: The `Data` returned by the request.
-- `timeline`: The `Alamofire.Timeline` of the request which contains timing information.
+- `metrics`: The `URLSessionTaskMetrics` of the request which contains timing information. `# TODO: not implemented yet`
 
 #### Encoding and Decoding
 Only JSON requests and responses are supported. These are encoded and decoded by `JSONEncoder` and `JSONDecoder` respectively, using Swift's `Codable` apis.
@@ -120,13 +132,15 @@ Request behaviours are used to modify, authorize, monitor or respond to requests
 `RequestBehaviour` is a protocol you can conform to with each function being optional. As the behaviours must work across multiple different request types, they only have access to a typed erased `AnyRequest`.
 
 ```swift
+public typealias RequestValidationPublisher = AnyPublisher<URLRequest, Error>
+
 public protocol RequestBehaviour {
 
     /// runs first and allows the requests to be modified. If modifying asynchronously use validate
     func modifyRequest(request: AnyRequest, urlRequest: URLRequest) -> URLRequest
 
-    /// validates and modifies the request. complete must be called with either .success or .fail
-    func validate(request: AnyRequest, urlRequest: URLRequest, complete: @escaping (RequestValidationResult) -> Void)
+    /// validates and modifies the request asynchronously.
+    func validate(request: AnyRequest, urlRequest: URLRequest) -> RequestValidationPublisher
 
     /// called before request is sent
     func beforeSend(request: AnyRequest)
@@ -146,7 +160,7 @@ public protocol RequestBehaviour {
 Each request has an optional `securityRequirement`. You can create a `RequestBehaviour` that checks this requirement and adds some form of authorization (usually via headers) in `validate` or `modifyRequest`. An alternative way is to set the `APIClient.defaultHeaders` which applies to all requests.
 
 #### Reactive and Promises
-To add support for a specific asynchronous library, just add an extension on `APIClient` and add a function that wraps the `makeRequest` function and converts from a closure based syntax to returning the object of choice (stream, future...ect)
+Not supported. This will eventually be pure Combine, all the way down to encoding/decoding. `# TODO: not there yet…`
 
 ## Models
 

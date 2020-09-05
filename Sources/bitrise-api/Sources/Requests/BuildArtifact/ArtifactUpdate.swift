@@ -40,11 +40,12 @@ extension API.BuildArtifact {
 
             public var body: V0ArtifactUpdateParams
 
-            public init(body: V0ArtifactUpdateParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0ArtifactUpdateParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: ArtifactUpdate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: ArtifactUpdate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -59,7 +60,7 @@ extension API.BuildArtifact {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0ArtifactShowResponseModel
 
             /** OK */

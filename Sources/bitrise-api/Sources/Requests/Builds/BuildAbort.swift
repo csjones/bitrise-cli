@@ -36,11 +36,12 @@ extension API.Builds {
 
             public var body: V0BuildAbortParams
 
-            public init(body: V0BuildAbortParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0BuildAbortParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: BuildAbort.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: BuildAbort.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -55,7 +56,7 @@ extension API.Builds {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0BuildAbortResponseModel
 
             /** OK */

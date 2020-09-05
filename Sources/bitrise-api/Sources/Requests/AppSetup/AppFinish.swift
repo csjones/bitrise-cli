@@ -32,11 +32,12 @@ extension API.AppSetup {
 
             public var body: V0AppFinishParams
 
-            public init(body: V0AppFinishParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0AppFinishParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: AppFinish.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: AppFinish.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.AppSetup {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0AppFinishRespModel
 
             /** OK */

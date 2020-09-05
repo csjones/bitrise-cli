@@ -20,15 +20,16 @@ extension API.AppSetup {
 
             public var body: V0AppUploadParams
 
-            public init(body: V0AppUploadParams, encoder: RequestEncoder? = nil) {
+            public init(body: V0AppUploadParams) {
                 self.body = body
-                super.init(service: AppCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: AppCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0AppRespModel
 
             /** OK */

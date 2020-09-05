@@ -3,6 +3,7 @@
 // https://github.com/yonaskolb/SwagGen
 //
 
+import Combine
 import Foundation
 
 public protocol RequestBehaviour {
@@ -10,8 +11,8 @@ public protocol RequestBehaviour {
     /// runs first and allows the requests to be modified. If modifying asynchronously use validate
     func modifyRequest(request: AnyRequest, urlRequest: URLRequest) -> URLRequest
 
-    /// validates and modifies the request. complete must be called with either .success or .fail
-    func validate(request: AnyRequest, urlRequest: URLRequest, complete: @escaping (RequestValidationResult) -> Void)
+    /// validates and modifies the request asynchronously.
+    func validate(request: AnyRequest, urlRequest: URLRequest) -> RequestValidationPublisher
 
     /// called before request is sent
     func beforeSend(request: AnyRequest)
@@ -26,16 +27,13 @@ public protocol RequestBehaviour {
     func onResponse(request: AnyRequest, response: AnyResponse)
 }
 
-public enum RequestValidationResult {
-    case success(URLRequest)
-    case failure(Error)
-}
+public typealias RequestValidationPublisher = AnyPublisher<URLRequest, Error>
 
 // Provides empty defaults so that each function becomes optional
 public extension RequestBehaviour {
     func modifyRequest(request: AnyRequest, urlRequest: URLRequest) -> URLRequest { return urlRequest }
-    func validate(request: AnyRequest, urlRequest: URLRequest, complete: @escaping (RequestValidationResult) -> Void) {
-        complete(.success(urlRequest))
+    func validate(request: AnyRequest, urlRequest: URLRequest) -> RequestValidationPublisher {
+        Just(urlRequest).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
     func beforeSend(request: AnyRequest) {}
     func onSuccess(request: AnyRequest, result: Any) {}
@@ -60,32 +58,19 @@ struct RequestBehaviourGroup {
         }
     }
 
-    func validate(_ urlRequest: URLRequest, complete: @escaping (RequestValidationResult) -> Void) {
-        if behaviours.isEmpty {
-            complete(.success(urlRequest))
-            return
-        }
-
-        var count = 0
-        var modifiedRequest = urlRequest
-        func validateNext() {
-            let behaviour = behaviours[count]
-            behaviour.validate(request: request, urlRequest: modifiedRequest) { result in
-                count += 1
-                switch result {
-                case .success(let urlRequest):
-                    modifiedRequest = urlRequest
-                    if count == self.behaviours.count {
-                        complete(.success(modifiedRequest))
-                    } else {
-                        validateNext()
+    func validate(_ urlRequest: URLRequest) -> RequestValidationPublisher {
+        let initial = Just(urlRequest).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return behaviours
+            .reduce(initial) { [unowned request] partial, behaviour in
+                partial
+                    .first()
+                    .flatMap { urlRequest in
+                        behaviour.validate(request: request, urlRequest: urlRequest)
                     }
-                case .failure(let error):
-                    complete(.failure(error))
-                }
+                    .eraseToAnyPublisher()
             }
-        }
-        validateNext()
+            .first()
+            .eraseToAnyPublisher()
     }
 
     func onSuccess(result: Any) {
@@ -175,7 +160,7 @@ extension APIResponseValue {
 
 extension APIResponse {
     public func asAny() -> APIResponse<AnyResponseValue> {
-        return APIResponse<AnyResponseValue>(request: request.asAny(), result: result.map{ $0.asAny() }, urlRequest: urlRequest, urlResponse: urlResponse, data: data, timeline: timeline)
+        return APIResponse<AnyResponseValue>(request: request.asAny(), result: result.map{ $0.asAny() }, urlRequest: urlRequest, urlResponse: urlResponse, data: data, metrics: metrics)
     }
 }
 

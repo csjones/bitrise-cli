@@ -32,11 +32,12 @@ extension API.Builds {
 
             public var body: V0BuildTriggerParams
 
-            public init(body: V0BuildTriggerParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0BuildTriggerParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: BuildTrigger.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: BuildTrigger.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.Builds {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0BuildTriggerRespModel
 
             /** OK */

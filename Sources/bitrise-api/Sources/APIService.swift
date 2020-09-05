@@ -44,4 +44,3 @@ public struct SecurityRequirement {
         self.scopes = scopes
     }
 }
-

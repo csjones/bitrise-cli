@@ -32,11 +32,12 @@ extension API.OutgoingWebhook {
 
             public var body: V0AppWebhookCreateParams
 
-            public init(body: V0AppWebhookCreateParams, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0AppWebhookCreateParams, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: OutgoingWebhookCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: OutgoingWebhookCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -51,7 +52,7 @@ extension API.OutgoingWebhook {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0AppWebhookCreatedResponseModel
 
             /** OK */

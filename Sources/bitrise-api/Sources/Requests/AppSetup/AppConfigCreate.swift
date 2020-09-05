@@ -28,11 +28,12 @@ extension API.AppSetup {
 
             public var body: V0AppConfigRequestParam
 
-            public init(body: V0AppConfigRequestParam, options: Options, encoder: RequestEncoder? = nil) {
+            public init(body: V0AppConfigRequestParam, options: Options) {
                 self.body = body
                 self.options = options
-                super.init(service: AppConfigCreate.service) { defaultEncoder in
-                    return try (encoder ?? defaultEncoder).encode(body)
+                super.init(service: AppConfigCreate.service) {
+                    let jsonEncoder = JSONEncoder()
+                    return try jsonEncoder.encode(body)
                 }
             }
 
@@ -47,7 +48,7 @@ extension API.AppSetup {
             }
         }
 
-        public enum Response: APIResponseValue, CustomStringConvertible, CustomDebugStringConvertible {
+        public enum Response: APIResponseValue, SingleFailureType, CustomStringConvertible, CustomDebugStringConvertible {
             public typealias SuccessType = V0AppConfigRespModel
 
             /** OK */

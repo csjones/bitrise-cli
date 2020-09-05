@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import Alamofire
 
 public protocol APIResponseValue: CustomDebugStringConvertible, CustomStringConvertible {
     associatedtype SuccessType
@@ -13,6 +12,17 @@ public protocol APIResponseValue: CustomDebugStringConvertible, CustomStringConv
     var response: Any { get }
     init(statusCode: Int, data: Data, decoder: ResponseDecoder) throws
     var success: SuccessType? { get }
+}
+
+/// API services that have only a single failure type.
+public protocol SingleFailureType: APIResponseValue {
+    associatedtype FailureType
+    var responseResult: APIResponseResult<SuccessType, FailureType> { get }
+}
+
+/// Wraps API failure responses that don't extend `Error` themselves.
+public struct APIError<FailureType>: Error {
+    let failure: FailureType
 }
 
 public enum APIResponseResult<SuccessType, FailureType>: CustomStringConvertible, CustomDebugStringConvertible {
@@ -40,6 +50,18 @@ public enum APIResponseResult<SuccessType, FailureType>: CustomStringConvertible
     public var debugDescription: String {
         return "\(description):\n\(value)"
     }
+
+    public func get() throws -> SuccessType {
+        switch self {
+        case .success(let success):
+            return success
+        case .failure(let failure):
+            if let error = failure as? Error {
+                throw error
+            }
+            throw APIError<FailureType>(failure: failure)
+        }
+    }
 }
 
 public struct APIResponse<T: APIResponseValue> {
@@ -59,16 +81,16 @@ public struct APIResponse<T: APIResponseValue> {
     /// The data returned by the server.
     public let data: Data?
 
-    /// The timeline of the complete lifecycle of the request.
-    public let timeline: Timeline?
+    /// Metrics for the request.
+    public let metrics: URLSessionTaskMetrics?
 
-    init(request: APIRequest<T>, result: APIResult<T>, urlRequest: URLRequest? = nil, urlResponse: HTTPURLResponse? = nil, data: Data? = nil, timeline: Timeline? = nil) {
+    init(request: APIRequest<T>, result: APIResult<T>, urlRequest: URLRequest? = nil, urlResponse: HTTPURLResponse? = nil, data: Data? = nil, metrics: URLSessionTaskMetrics? = nil) {
         self.request = request
         self.result = result
         self.urlRequest = urlRequest
         self.urlResponse = urlResponse
         self.data = data
-        self.timeline = timeline
+        self.metrics = metrics
     }
 }
 
@@ -91,8 +113,8 @@ extension APIResponse: CustomStringConvertible, CustomDebugStringConvertible {
 
     public var debugDescription: String {
         var string = description
-        if let response = try? result.get().response {
-          if let debugStringConvertible = response as? CustomDebugStringConvertible {
+        if case let .success(success) = result {
+            if let debugStringConvertible = success.response as? CustomDebugStringConvertible {
               string += "\n\(debugStringConvertible.debugDescription)"
           }
         }
