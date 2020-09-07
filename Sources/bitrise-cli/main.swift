@@ -26,9 +26,9 @@ extension bitrise_cli {
         func run() throws {
             print("APP")
             /// Something we can wait on at the very end of the script.
-            
+
             APIClient.default.defaultHeaders["Authorization"] = "qnmzR29EuEa0pdJ0EIh-BaNzJMNYPpPvg-eUvrzdU6HjwBpw6NIcJ_2tbEsEXexG0Fuitg9VHo3Qa2bwgHGgnw"
-            
+
             let done = DispatchWorkItem {}
             let request = API.Application.AppList.Request()
             
