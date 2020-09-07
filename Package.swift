@@ -12,7 +12,7 @@ let package = Package(
         .executable(
             name: "br",
             targets: [
-                "bitrise-cli"
+                "ApplicationEntryPoint"
             ]
         )
     ],
@@ -30,23 +30,29 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "bitrise-cli",
+            name: "ApplicationEntryPoint",
             dependencies: [
-                .target(name: "bitrise_api"),
+                "BitriseCLI"
+            ]
+        ),
+        .target(
+            name: "BitriseCLI",
+            dependencies: [
+                .target(name: "BitriseAPI"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ]
         ),
         .target(
-            name: "bitrise_api",
+            name: "BitriseAPI",
             dependencies: [
 //                "Alamofire"
             ],
-            path: "Sources/bitrise-api/Sources"
+            path: "Sources/BitriseAPI/Sources"
         ),
         .testTarget(
-            name: "bitrise-cliTests",
+            name: "BitriseCLITests",
             dependencies: [
-                "bitrise-cli"
+                "BitriseCLI"
             ]
         ),
     ]
