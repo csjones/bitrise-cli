@@ -16,3 +16,4 @@ struct AppListCommand: AuthenticatedClientCommand {
             .waitUntilDone()
     }
 }
+ 
