@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Promotes an avatar candidate for an app
-struct AvatarCandidatePromoteCommand: AuthenticatedClientCommand {
+struct AvatarCandidatePromoteCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AvatarCandidatePromote",
         abstract: "Promote an avatar candidate"

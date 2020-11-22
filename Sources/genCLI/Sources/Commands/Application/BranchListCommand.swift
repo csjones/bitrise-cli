@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List the existing branches of the repository of a specified Bitrise app.
-struct BranchListCommand: AuthenticatedClientCommand {
+struct BranchListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BranchList",
         abstract: "List the branches of an app's repository"

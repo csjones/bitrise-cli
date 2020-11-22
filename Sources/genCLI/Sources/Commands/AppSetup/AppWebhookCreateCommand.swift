@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // [Register an incoming webhook](https://devcenter.bitrise.io/api/incoming-and-outgoing-webhooks/#incoming-webhooks) for a specific application. You can do this during the app registration process or at any other time in an app's life. When calling this endpoint, a webhook is registered at your git provider: this is necessary to automatically trigger builds on Bitrise.
-struct AppWebhookCreateCommand: AuthenticatedClientCommand {
+struct AppWebhookCreateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppWebhookCreate",
         abstract: "Register an incoming webhook for a specific application"

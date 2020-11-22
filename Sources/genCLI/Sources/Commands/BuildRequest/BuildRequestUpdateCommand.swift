@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Update a specific build request of a specific app
-struct BuildRequestUpdateCommand: AuthenticatedClientCommand {
+struct BuildRequestUpdateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildRequestUpdate",
         abstract: "Update a build request"

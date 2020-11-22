@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List Apple API credentials for a specific Bitrise user
-struct AppleApiCredentialListCommand: AuthenticatedClientCommand {
+struct AppleApiCredentialListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppleApiCredentialList",
         abstract: "List Apple API credentials for a specific user"

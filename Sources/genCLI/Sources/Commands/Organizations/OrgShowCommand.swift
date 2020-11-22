@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get a specified Bitrise organization that the user is part of.
-struct OrgShowCommand: AuthenticatedClientCommand {
+struct OrgShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "OrgShow",
         abstract: "Get a specified organization."

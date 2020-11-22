@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // This is the last step of uploading a generic project file to Bitrise. Confirm the generic project file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.
-struct GenericProjectFileConfirmCommand: AuthenticatedClientCommand {
+struct GenericProjectFileConfirmCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "GenericProjectFileConfirm",
         abstract: "Confirm a generic project file upload"

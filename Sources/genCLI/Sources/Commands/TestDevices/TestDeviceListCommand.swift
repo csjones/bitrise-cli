@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List registered test devices of all members of a specified Bitrise app
-struct TestDeviceListCommand: AuthenticatedClientCommand {
+struct TestDeviceListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "TestDeviceList",
         abstract: "List the test devices for an app"

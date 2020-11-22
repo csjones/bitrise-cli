@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the available Bitrise addons
-struct AddonsListCommand: AuthenticatedClientCommand {
+struct AddonsListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AddonsList",
         abstract: "Get list of available Bitrise addons"

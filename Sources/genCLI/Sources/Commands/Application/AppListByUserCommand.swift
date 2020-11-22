@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the available apps for the given user.  It needs the user slug that you can get from the [GET /me](https://api-docs.bitrise.io/#/user/user-profile) endpoint.
-struct AppListByUserCommand: AuthenticatedClientCommand {
+struct AppListByUserCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppListByUser",
         abstract: "Get list of the apps for a user"

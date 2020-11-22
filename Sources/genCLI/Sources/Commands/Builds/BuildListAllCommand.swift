@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the Bitrise builds that can be accessed with the authenticated account. Filter builds based on their owner, using the owner slug, or the status of the build.
-struct BuildListAllCommand: AuthenticatedClientCommand {
+struct BuildListAllCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildListAll",
         abstract: "List all builds"

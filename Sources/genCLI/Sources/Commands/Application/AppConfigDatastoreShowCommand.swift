@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get the full `bitrise.yml` configuration of an application, by providing the app slug. It returns the current `bitrise.yml` that is stored on bitrise.io in full, including the trigger map, the different workflows and the Steps.
-struct AppConfigDatastoreShowCommand: AuthenticatedClientCommand {
+struct AppConfigDatastoreShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppConfigDatastoreShow",
         abstract: "Get bitrise.yml of a specific app"

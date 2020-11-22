@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Abort a specific build. Set an abort reason with the `abort_reason` parameter. Use the `abort_with_success` parameter to abort a build but still count it as a successful one.
-struct BuildAbortCommand: AuthenticatedClientCommand {
+struct BuildAbortCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildAbort",
         abstract: "Abort a specific build"

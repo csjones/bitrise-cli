@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the provisioned addons for the authenticated user
-struct AddonListByUserCommand: AuthenticatedClientCommand {
+struct AddonListByUserCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AddonListByUser",
         abstract: "Get list of the addons for user"

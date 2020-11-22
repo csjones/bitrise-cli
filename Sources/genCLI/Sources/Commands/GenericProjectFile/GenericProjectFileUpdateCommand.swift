@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Update a generic project file's attributes. You can fetch an app's generic project file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/generic-project-files](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-list) endpoint. Read more in our [Updating an uploaded file](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#updating-an-uploaded-file) guide.
-struct GenericProjectFileUpdateCommand: AuthenticatedClientCommand {
+struct GenericProjectFileUpdateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "GenericProjectFileUpdate",
         abstract: "Update a generic project file"

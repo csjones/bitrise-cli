@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Update the `is_public_page_enabled` attribute of your app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [GET /apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
-struct ArtifactUpdateCommand: AuthenticatedClientCommand {
+struct ArtifactUpdateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ArtifactUpdate",
         abstract: "Update a build artifact"

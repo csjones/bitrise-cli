@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Show information about a specific user
-struct UserShowCommand: AuthenticatedClientCommand {
+struct UserShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "UserShow",
         abstract: "Get a specific user"

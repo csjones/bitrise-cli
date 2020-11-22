@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the outgoing webhooks registered for a specified Bitrise app. This returns all the relevant data of the webhook, including the slug of the webhook and its URL.
-struct OutgoingWebhookListCommand: AuthenticatedClientCommand {
+struct OutgoingWebhookListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "OutgoingWebhookList",
         abstract: "List the outgoing webhooks of an app"

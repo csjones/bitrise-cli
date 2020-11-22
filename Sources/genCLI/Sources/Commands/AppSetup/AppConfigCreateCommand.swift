@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Upload a new bitrise.yml for your application.
-struct AppConfigCreateCommand: AuthenticatedClientCommand {
+struct AppConfigCreateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppConfigCreate",
         abstract: "Upload a new bitrise.yml for your application."

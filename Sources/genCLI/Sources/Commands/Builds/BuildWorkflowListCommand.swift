@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List the workflows that were triggered at any time for a given Bitrise app. Note that it might list workflows that are currently not defined in the app's `bitrise.yml` configuration - and conversely, workflows that were never triggered will not be listed even if they are defined in the `bitrise.yml` file.
-struct BuildWorkflowListCommand: AuthenticatedClientCommand {
+struct BuildWorkflowListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildWorkflowList",
         abstract: "List the workflows of an app"

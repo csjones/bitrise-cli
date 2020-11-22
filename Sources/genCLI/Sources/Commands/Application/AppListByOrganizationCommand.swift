@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the available apps owned by a given organization. [Find the organization URL](https://devcenter.bitrise.io/team-management/organizations/org-url/) of the organisations you are part of; be aware that the endpoint will not return any apps if the authenticated account is not a member of the given organisation.
-struct AppListByOrganizationCommand: AuthenticatedClientCommand {
+struct AppListByOrganizationCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppListByOrganization",
         abstract: "Get list of the apps for an organization"

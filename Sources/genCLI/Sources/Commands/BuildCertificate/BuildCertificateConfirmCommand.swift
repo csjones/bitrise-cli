@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // This is the last step of uploading a build certificate to Bitrise. Confirm the build certificate upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
-struct BuildCertificateConfirmCommand: AuthenticatedClientCommand {
+struct BuildCertificateConfirmCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildCertificateConfirm",
         abstract: "Confirm a build certificate upload"

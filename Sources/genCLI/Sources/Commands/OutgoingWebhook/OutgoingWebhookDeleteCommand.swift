@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Delete an existing outgoing webhook for a specified Bitrise app.
-struct OutgoingWebhookDeleteCommand: AuthenticatedClientCommand {
+struct OutgoingWebhookDeleteCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "OutgoingWebhookDelete",
         abstract: "Delete an outgoing webhook of an app"

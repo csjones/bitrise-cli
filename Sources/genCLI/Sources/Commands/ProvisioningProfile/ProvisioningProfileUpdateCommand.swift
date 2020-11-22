@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Update an uploaded provisioning profile's attributes. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Updating an uploaded iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
-struct ProvisioningProfileUpdateCommand: AuthenticatedClientCommand {
+struct ProvisioningProfileUpdateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ProvisioningProfileUpdate",
         abstract: "Update a provisioning profile"

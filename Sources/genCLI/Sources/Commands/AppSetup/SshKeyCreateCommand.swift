@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Add an SSH-key to a specific app. After creating an app, you need to register the SSH key so that Bitrise will be able to access and clone your repository during the build process. This requires the app slug of your newly created app.
-struct SshKeyCreateCommand: AuthenticatedClientCommand {
+struct SshKeyCreateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "SshKeyCreate",
         abstract: "Add an SSH-key to a specific app"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all Bitrise organizations that the user is part of
-struct OrgListCommand: AuthenticatedClientCommand {
+struct OrgListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "OrgList",
         abstract: "List the organizations that the user is part of"

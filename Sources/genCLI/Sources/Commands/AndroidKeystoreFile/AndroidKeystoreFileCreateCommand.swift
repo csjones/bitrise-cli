@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Add a new Android keystore file to an app
-struct AndroidKeystoreFileCreateCommand: AuthenticatedClientCommand {
+struct AndroidKeystoreFileCreateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AndroidKeystoreFileCreate",
         abstract: "Create an Android keystore file"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the build certificates that have been uploaded to a specific app. Read more in our [Listing the uploaded iOS code signing files of an app](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#listing-the-uploaded-ios-code-signing-files-of-an-app) guide.
-struct BuildCertificateListCommand: AuthenticatedClientCommand {
+struct BuildCertificateListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildCertificateList",
         abstract: "Get a list of the build certificates"

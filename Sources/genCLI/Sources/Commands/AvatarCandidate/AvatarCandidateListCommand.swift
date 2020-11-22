@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all available avatar candidates for an application
-struct AvatarCandidateListCommand: AuthenticatedClientCommand {
+struct AvatarCandidateListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AvatarCandidateList",
         abstract: "Get list of the avatar candidates"

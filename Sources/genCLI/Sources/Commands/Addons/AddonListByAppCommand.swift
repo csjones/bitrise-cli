@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the provisioned addons for the authorized apps
-struct AddonListByAppCommand: AuthenticatedClientCommand {
+struct AddonListByAppCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AddonListByApp",
         abstract: "Get list of the addons for apps"

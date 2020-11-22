@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get the bitrise.yml file of one of the builds of a given app. This will return the `bitrise.yml` configuration with which the build ran. You can compare it to [the current bitrise.yml configuration](https://api-docs.bitrise.io/#/application/app-config-datastore-show) of the app.
-struct BuildBitriseYmlShowCommand: AuthenticatedClientCommand {
+struct BuildBitriseYmlShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildBitriseYmlShow",
         abstract: "Get the bitrise.yml of a build"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get the specified build of a given Bitrise app. You need to provide both an app slug and a build slug. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL. The endpoint returns all the relevant data of the build.
-struct BuildShowCommand: AuthenticatedClientCommand {
+struct BuildShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildShow",
         abstract: "Get a build of a given app"

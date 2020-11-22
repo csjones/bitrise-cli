@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Delete an app's provisioning profile. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Deleting an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#deleting-an-ios-code-signing-file) guide.
-struct ProvisioningProfileDeleteCommand: AuthenticatedClientCommand {
+struct ProvisioningProfileDeleteCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ProvisioningProfileDelete",
         abstract: "Delete a provisioning profile"

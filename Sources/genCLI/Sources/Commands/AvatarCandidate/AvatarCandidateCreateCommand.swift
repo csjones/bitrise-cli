@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Add new avatar candidates to a specific app
-struct AvatarCandidateCreateCommand: AuthenticatedClientCommand {
+struct AvatarCandidateCreateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AvatarCandidateCreate",
         abstract: "Create avatar candidates"

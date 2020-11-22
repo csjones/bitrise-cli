@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the apps available for the authenticated account, including those that are owned by other users or Organizations.
-struct AppListCommand: AuthenticatedClientCommand {
+struct AppListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AppList",
         abstract: "Get list of the apps"

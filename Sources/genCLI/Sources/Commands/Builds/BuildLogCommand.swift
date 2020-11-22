@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get the build log of a specified build of a Bitrise app. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL.
-struct BuildLogCommand: AuthenticatedClientCommand {
+struct BuildLogCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildLog",
         abstract: "Get the build log of a build"

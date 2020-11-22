@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the builds of a specified Bitrise app. Set parameters to filter builds: for example, you can search for builds run with a given workflow or all builds that were triggered by Pull Requests. It returns all the relevant data of the build.
-struct BuildListCommand: AuthenticatedClientCommand {
+struct BuildListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildList",
         abstract: "List all builds of an app"

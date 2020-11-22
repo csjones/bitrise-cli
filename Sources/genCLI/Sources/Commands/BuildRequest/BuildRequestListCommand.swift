@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List the existing open build requests of a specified Bitrise app
-struct BuildRequestListCommand: AuthenticatedClientCommand {
+struct BuildRequestListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "BuildRequestList",
         abstract: "List the open build requests for an app"

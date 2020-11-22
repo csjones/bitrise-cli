@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // This is the last step of the upload process. Confirm the provisioning profile upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
-struct ProvisioningProfileConfirmCommand: AuthenticatedClientCommand {
+struct ProvisioningProfileConfirmCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ProvisioningProfileConfirm",
         abstract: "Confirm a provisioning profile upload"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Retrieve data of a specific generic project file to check its attributes and optionally modify them with the [PATCH /apps/](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-update) endpoint. Read more in our [Retrieving a specific file's data](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#retrieving-a-specific-files-data) guide.
-struct GenericProjectFileShowCommand: AuthenticatedClientCommand {
+struct GenericProjectFileShowCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "GenericProjectFileShow",
         abstract: "Get a specific generic project file"

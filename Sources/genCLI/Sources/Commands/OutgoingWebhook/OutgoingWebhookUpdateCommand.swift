@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Update an existing outgoing webhook (URL, events, secrets and headers) for a specified Bitrise app. Even if you do not want to change one of the parameters, you still have to provide that parameter as well: simply use its existing value.
-struct OutgoingWebhookUpdateCommand: AuthenticatedClientCommand {
+struct OutgoingWebhookUpdateCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "OutgoingWebhookUpdate",
         abstract: "Update an outgoing webhook of an app"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Shows the authenticated users profile data
-struct UserProfileCommand: AuthenticatedClientCommand {
+struct UserProfileCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "UserProfile",
         abstract: "Get your profile data"

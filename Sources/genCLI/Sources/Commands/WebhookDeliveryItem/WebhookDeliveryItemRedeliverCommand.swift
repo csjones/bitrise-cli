@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Re-deliver the delivery item of a specified webhook of a Bitrise application
-struct WebhookDeliveryItemRedeliverCommand: AuthenticatedClientCommand {
+struct WebhookDeliveryItemRedeliverCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "WebhookDeliveryItemRedeliver",
         abstract: "Re-deliver the webhook delivery items of an app"

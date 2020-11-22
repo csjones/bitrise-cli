@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the Bitrise activity events
-struct ActivityListCommand: AuthenticatedClientCommand {
+struct ActivityListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ActivityList",
         abstract: "Get list of Bitrise activity events"

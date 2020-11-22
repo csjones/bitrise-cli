@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Get the subscription of the user: the current plan, any pending plans, and the duration of a trial period if applicable
-struct UserPlanCommand: AuthenticatedClientCommand {
+struct UserPlanCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "UserPlan",
         abstract: "The subscription plan of the user"

@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the android keystore files that have been uploaded to a specific app.
-struct AndroidKeystoreFileListCommand: AuthenticatedClientCommand {
+struct AndroidKeystoreFileListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "AndroidKeystoreFileList",
         abstract: "Get a list of the android keystore files"

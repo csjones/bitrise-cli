@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // Delete a build artifact of an app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
-struct ArtifactDeleteCommand: AuthenticatedClientCommand {
+struct ArtifactDeleteCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "ArtifactDelete",
         abstract: "Delete a build artifact"

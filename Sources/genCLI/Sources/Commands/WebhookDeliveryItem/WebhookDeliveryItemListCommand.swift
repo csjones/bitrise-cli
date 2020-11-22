@@ -7,7 +7,7 @@ import ArgumentParser
 import BitriseAPI
 
 // List all the delivery items of an outgoing webhook of a Bitrise application
-struct WebhookDeliveryItemListCommand: AuthenticatedClientCommand {
+struct WebhookDeliveryItemListCommand: AuthenticatedCommand {
     static var configuration = CommandConfiguration(
         commandName: "WebhookDeliveryItemList",
         abstract: "List the webhook delivery items of an app"
