@@ -16,7 +16,7 @@ struct BuildCertificateCommand: ParsableCommand {
             BuildCertificateDeleteCommand.self,
             BuildCertificateListCommand.self,
             BuildCertificateShowCommand.self,
-            BuildCertificateUpdateCommand.self,
+            BuildCertificateUpdateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

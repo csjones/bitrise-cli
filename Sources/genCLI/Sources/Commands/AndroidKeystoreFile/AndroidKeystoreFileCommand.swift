@@ -12,7 +12,7 @@ struct AndroidKeystoreFileCommand: ParsableCommand {
         abstract: "",
         subcommands: [
             AndroidKeystoreFileCreateCommand.self,
-            AndroidKeystoreFileListCommand.self,
+            AndroidKeystoreFileListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

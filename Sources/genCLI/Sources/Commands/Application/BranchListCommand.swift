@@ -13,9 +13,8 @@ struct BranchListCommand: AuthenticatedCommand {
         abstract: "List the branches of an app's repository"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.Application.BranchList.Request(appSlug: appSlug)

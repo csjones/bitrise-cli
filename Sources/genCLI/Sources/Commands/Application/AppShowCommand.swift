@@ -13,9 +13,8 @@ struct AppShowCommand: AuthenticatedCommand {
         abstract: "Get a specific app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.Application.AppShow.Request(appSlug: appSlug)

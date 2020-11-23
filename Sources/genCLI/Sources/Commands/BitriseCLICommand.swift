@@ -28,7 +28,7 @@ struct BitriseCLICommand: ParsableCommand {
             ProvisioningProfileCommand.self,
             TestDevicesCommand.self,
             UserCommand.self,
-            WebhookDeliveryItemCommand.self,
+            WebhookDeliveryItemCommand.self
         ]
     )
 }

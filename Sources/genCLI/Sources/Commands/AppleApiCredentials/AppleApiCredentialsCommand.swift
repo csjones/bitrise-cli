@@ -11,7 +11,7 @@ struct AppleApiCredentialsCommand: ParsableCommand {
         commandName: "AppleApiCredentials",
         abstract: "",
         subcommands: [
-            AppleApiCredentialListCommand.self,
+            AppleApiCredentialListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

@@ -12,7 +12,7 @@ struct BuildRequestCommand: ParsableCommand {
         abstract: "",
         subcommands: [
             BuildRequestListCommand.self,
-            BuildRequestUpdateCommand.self,
+            BuildRequestUpdateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

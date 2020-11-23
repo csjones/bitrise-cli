@@ -13,7 +13,7 @@ struct UserCommand: ParsableCommand {
         subcommands: [
             UserPlanCommand.self,
             UserProfileCommand.self,
-            UserShowCommand.self,
+            UserShowCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

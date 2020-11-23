@@ -13,10 +13,9 @@ struct BuildCertificateConfirmCommand: AuthenticatedCommand {
         abstract: "Confirm a build certificate upload"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildCertificateSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildCertificate.BuildCertificateConfirm.Request(appSlug: appSlug, buildCertificateSlug: buildCertificateSlug)

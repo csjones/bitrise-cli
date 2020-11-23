@@ -13,9 +13,8 @@ struct AppConfigDatastoreShowCommand: AuthenticatedCommand {
         abstract: "Get bitrise.yml of a specific app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.Application.AppConfigDatastoreShow.Request(appSlug: appSlug)

@@ -13,9 +13,8 @@ struct BuildCertificateCreateCommand: AuthenticatedCommand {
         abstract: "Create a build certificate"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.BuildCertificate.BuildCertificateCreate.Request(appSlug: appSlug)

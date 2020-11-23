@@ -13,9 +13,8 @@ struct AvatarCandidateListCommand: AuthenticatedCommand {
         abstract: "Get list of the avatar candidates"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AvatarCandidate.AvatarCandidateList.Request(appSlug: appSlug)

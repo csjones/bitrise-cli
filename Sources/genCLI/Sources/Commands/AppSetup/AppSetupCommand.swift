@@ -15,7 +15,7 @@ struct AppSetupCommand: ParsableCommand {
             AppCreateCommand.self,
             AppFinishCommand.self,
             AppWebhookCreateCommand.self,
-            SshKeyCreateCommand.self,
+            SshKeyCreateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

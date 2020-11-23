@@ -13,9 +13,8 @@ struct AvatarCandidateCreateCommand: AuthenticatedCommand {
         abstract: "Create avatar candidates"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AvatarCandidate.AvatarCandidateCreate.Request(appSlug: appSlug)

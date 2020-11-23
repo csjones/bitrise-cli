@@ -13,9 +13,8 @@ struct BuildRequestListCommand: AuthenticatedCommand {
         abstract: "List the open build requests for an app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.BuildRequest.BuildRequestList.Request(appSlug: appSlug)

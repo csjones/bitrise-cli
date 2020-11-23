@@ -13,10 +13,9 @@ struct OutgoingWebhookUpdateCommand: AuthenticatedCommand {
         abstract: "Update an outgoing webhook of an app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var appWebhookSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.OutgoingWebhook.OutgoingWebhookUpdate.Request(appSlug: appSlug, appWebhookSlug: appWebhookSlug)

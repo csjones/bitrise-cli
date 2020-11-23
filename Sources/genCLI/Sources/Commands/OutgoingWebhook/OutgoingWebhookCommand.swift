@@ -14,7 +14,7 @@ struct OutgoingWebhookCommand: ParsableCommand {
             OutgoingWebhookCreateCommand.self,
             OutgoingWebhookDeleteCommand.self,
             OutgoingWebhookListCommand.self,
-            OutgoingWebhookUpdateCommand.self,
+            OutgoingWebhookUpdateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

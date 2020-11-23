@@ -13,7 +13,7 @@ struct WebhookDeliveryItemCommand: ParsableCommand {
         subcommands: [
             WebhookDeliveryItemListCommand.self,
             WebhookDeliveryItemRedeliverCommand.self,
-            WebhookDeliveryItemShowCommand.self,
+            WebhookDeliveryItemShowCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

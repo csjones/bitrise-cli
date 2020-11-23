@@ -13,7 +13,6 @@ struct UserPlanCommand: AuthenticatedCommand {
         abstract: "The subscription plan of the user"
     )
 
-
     @OptionGroup var auth: AuthOptions
 
     func run() throws {

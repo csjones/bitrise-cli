@@ -13,11 +13,10 @@ struct ProvisioningProfileListCommand: AuthenticatedCommand {
         abstract: "Get a list of the provisioning profiles"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileList.Request(appSlug: appSlug, next: next, limit: limit)

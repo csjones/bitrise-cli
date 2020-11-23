@@ -13,9 +13,8 @@ struct TestDeviceListCommand: AuthenticatedCommand {
         abstract: "List the test devices for an app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.TestDevices.TestDeviceList.Request(appSlug: appSlug)

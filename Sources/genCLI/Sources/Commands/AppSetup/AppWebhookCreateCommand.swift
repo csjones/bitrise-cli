@@ -13,9 +13,8 @@ struct AppWebhookCreateCommand: AuthenticatedCommand {
         abstract: "Register an incoming webhook for a specific application"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AppSetup.AppWebhookCreate.Request(appSlug: appSlug)

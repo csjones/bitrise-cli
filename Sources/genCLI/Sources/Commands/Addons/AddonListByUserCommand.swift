@@ -13,9 +13,8 @@ struct AddonListByUserCommand: AuthenticatedCommand {
         abstract: "Get list of the addons for user"
     )
 
-    @Argument var userSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var userSlug: String
 
     func run() throws {
         let request = API.Addons.AddonListByUser.Request(userSlug: userSlug)

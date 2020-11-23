@@ -13,10 +13,9 @@ struct BuildCertificateShowCommand: AuthenticatedCommand {
         abstract: "Get a specific build certificate"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildCertificateSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildCertificate.BuildCertificateShow.Request(appSlug: appSlug, buildCertificateSlug: buildCertificateSlug)

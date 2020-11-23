@@ -13,11 +13,10 @@ struct GenericProjectFileListCommand: AuthenticatedCommand {
         abstract: "Get a list of the generic project files"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.GenericProjectFile.GenericProjectFileList.Request(appSlug: appSlug, next: next, limit: limit)

@@ -13,9 +13,8 @@ struct AppConfigCreateCommand: AuthenticatedCommand {
         abstract: "Upload a new bitrise.yml for your application."
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AppSetup.AppConfigCreate.Request(appSlug: appSlug)

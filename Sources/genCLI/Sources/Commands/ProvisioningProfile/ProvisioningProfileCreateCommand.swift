@@ -13,9 +13,8 @@ struct ProvisioningProfileCreateCommand: AuthenticatedCommand {
         abstract: "Create a provisioning profile"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileCreate.Request(appSlug: appSlug)

@@ -13,11 +13,10 @@ struct OutgoingWebhookListCommand: AuthenticatedCommand {
         abstract: "List the outgoing webhooks of an app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.OutgoingWebhook.OutgoingWebhookList.Request(appSlug: appSlug, next: next, limit: limit)

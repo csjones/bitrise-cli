@@ -13,7 +13,6 @@ struct AppCreateCommand: AuthenticatedCommand {
         abstract: "Add a new app"
     )
 
-
     @OptionGroup var auth: AuthOptions
 
     func run() throws {

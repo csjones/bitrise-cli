@@ -13,6 +13,7 @@ struct BuildListCommand: AuthenticatedCommand {
         abstract: "List all builds of an app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var sortBy: SortBy?
     @Option var branch: String?
@@ -26,8 +27,6 @@ struct BuildListCommand: AuthenticatedCommand {
     @Option var status: Int?
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildList.Request(appSlug: appSlug, sortBy: sortBy, branch: branch, workflow: workflow, commitMessage: commitMessage, triggerEventType: triggerEventType, pullRequestId: pullRequestId, buildNumber: buildNumber, after: after, before: before, status: status, next: next, limit: limit)

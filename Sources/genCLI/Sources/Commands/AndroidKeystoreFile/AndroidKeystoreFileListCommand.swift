@@ -13,11 +13,10 @@ struct AndroidKeystoreFileListCommand: AuthenticatedCommand {
         abstract: "Get a list of the android keystore files"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.AndroidKeystoreFile.AndroidKeystoreFileList.Request(appSlug: appSlug, next: next, limit: limit)

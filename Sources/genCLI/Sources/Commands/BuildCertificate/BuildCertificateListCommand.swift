@@ -13,11 +13,10 @@ struct BuildCertificateListCommand: AuthenticatedCommand {
         abstract: "Get a list of the build certificates"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildCertificate.BuildCertificateList.Request(appSlug: appSlug, next: next, limit: limit)

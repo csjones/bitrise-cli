@@ -16,7 +16,7 @@ struct GenericProjectFileCommand: ParsableCommand {
             GenericProjectFileListCommand.self,
             GenericProjectFileShowCommand.self,
             GenericProjectFileUpdateCommand.self,
-            GenericProjectFilesCreateCommand.self,
+            GenericProjectFilesCreateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

@@ -13,10 +13,9 @@ struct BuildCertificateDeleteCommand: AuthenticatedCommand {
         abstract: "Delete a build certificate"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildCertificateSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildCertificate.BuildCertificateDelete.Request(appSlug: appSlug, buildCertificateSlug: buildCertificateSlug)

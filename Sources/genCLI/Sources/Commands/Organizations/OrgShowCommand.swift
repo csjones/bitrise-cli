@@ -13,9 +13,8 @@ struct OrgShowCommand: AuthenticatedCommand {
         abstract: "Get a specified organization."
     )
 
-    @Argument var orgSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var orgSlug: String
 
     func run() throws {
         let request = API.Organizations.OrgShow.Request(orgSlug: orgSlug)

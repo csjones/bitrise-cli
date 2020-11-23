@@ -13,7 +13,6 @@ struct UserProfileCommand: AuthenticatedCommand {
         abstract: "Get your profile data"
     )
 
-
     @OptionGroup var auth: AuthOptions
 
     func run() throws {

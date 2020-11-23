@@ -13,11 +13,10 @@ struct WebhookDeliveryItemRedeliverCommand: AuthenticatedCommand {
         abstract: "Re-deliver the webhook delivery items of an app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var appWebhookSlug: String
     @Argument var webhookDeliveryItemSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.WebhookDeliveryItem.WebhookDeliveryItemRedeliver.Request(appSlug: appSlug, appWebhookSlug: appWebhookSlug, webhookDeliveryItemSlug: webhookDeliveryItemSlug)

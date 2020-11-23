@@ -13,12 +13,11 @@ struct AppListByOrganizationCommand: AuthenticatedCommand {
         abstract: "Get list of the apps for an organization"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var orgSlug: String
     @Option var sortBy: SortBy?
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Application.AppListByOrganization.Request(orgSlug: orgSlug, sortBy: sortBy, next: next, limit: limit)

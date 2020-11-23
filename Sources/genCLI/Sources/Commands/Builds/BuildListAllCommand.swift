@@ -13,13 +13,12 @@ struct BuildListAllCommand: AuthenticatedCommand {
         abstract: "List all builds"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Option var ownerSlug: String?
     @Option var isOnHold: Bool?
     @Option var status: Int?
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildListAll.Request(ownerSlug: ownerSlug, isOnHold: isOnHold, status: status, next: next, limit: limit)

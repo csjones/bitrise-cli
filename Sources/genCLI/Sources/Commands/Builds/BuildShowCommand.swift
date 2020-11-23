@@ -13,10 +13,9 @@ struct BuildShowCommand: AuthenticatedCommand {
         abstract: "Get a build of a given app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildShow.Request(appSlug: appSlug, buildSlug: buildSlug)

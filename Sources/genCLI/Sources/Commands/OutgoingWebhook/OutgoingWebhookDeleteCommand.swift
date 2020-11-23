@@ -13,10 +13,9 @@ struct OutgoingWebhookDeleteCommand: AuthenticatedCommand {
         abstract: "Delete an outgoing webhook of an app"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var appWebhookSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.OutgoingWebhook.OutgoingWebhookDelete.Request(appSlug: appSlug, appWebhookSlug: appWebhookSlug)

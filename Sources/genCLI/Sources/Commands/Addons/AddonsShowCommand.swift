@@ -13,9 +13,8 @@ struct AddonsShowCommand: AuthenticatedCommand {
         abstract: "Get a specific Bitrise addon"
     )
 
-    @Argument var addonId: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var addonId: String
 
     func run() throws {
         let request = API.Addons.AddonsShow.Request(addonId: addonId)

@@ -13,9 +13,8 @@ struct SshKeyCreateCommand: AuthenticatedCommand {
         abstract: "Add an SSH-key to a specific app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AppSetup.SshKeyCreate.Request(appSlug: appSlug)

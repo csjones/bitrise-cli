@@ -11,7 +11,7 @@ struct TestDevicesCommand: ParsableCommand {
         commandName: "TestDevices",
         abstract: "",
         subcommands: [
-            TestDeviceListCommand.self,
+            TestDeviceListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

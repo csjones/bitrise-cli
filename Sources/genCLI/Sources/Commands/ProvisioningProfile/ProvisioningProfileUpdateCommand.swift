@@ -13,10 +13,9 @@ struct ProvisioningProfileUpdateCommand: AuthenticatedCommand {
         abstract: "Update a provisioning profile"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var provisioningProfileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileUpdate.Request(appSlug: appSlug, provisioningProfileSlug: provisioningProfileSlug)

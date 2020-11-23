@@ -13,12 +13,11 @@ struct ArtifactListCommand: AuthenticatedCommand {
         abstract: "Get a list of all build artifacts"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildArtifact.ArtifactList.Request(appSlug: appSlug, buildSlug: buildSlug, next: next, limit: limit)

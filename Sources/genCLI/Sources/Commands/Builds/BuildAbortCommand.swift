@@ -13,10 +13,9 @@ struct BuildAbortCommand: AuthenticatedCommand {
         abstract: "Abort a specific build"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildAbort.Request(appSlug: appSlug, buildSlug: buildSlug)

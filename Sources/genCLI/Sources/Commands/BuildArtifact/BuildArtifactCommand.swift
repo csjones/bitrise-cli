@@ -14,7 +14,7 @@ struct BuildArtifactCommand: ParsableCommand {
             ArtifactDeleteCommand.self,
             ArtifactListCommand.self,
             ArtifactShowCommand.self,
-            ArtifactUpdateCommand.self,
+            ArtifactUpdateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

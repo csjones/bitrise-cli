@@ -16,7 +16,7 @@ struct ProvisioningProfileCommand: ParsableCommand {
             ProvisioningProfileDeleteCommand.self,
             ProvisioningProfileListCommand.self,
             ProvisioningProfileShowCommand.self,
-            ProvisioningProfileUpdateCommand.self,
+            ProvisioningProfileUpdateCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

@@ -13,11 +13,10 @@ struct ArtifactShowCommand: AuthenticatedCommand {
         abstract: "Get a specific build artifact"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
     @Argument var artifactSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildArtifact.ArtifactShow.Request(appSlug: appSlug, buildSlug: buildSlug, artifactSlug: artifactSlug)

@@ -13,10 +13,9 @@ struct BuildBitriseYmlShowCommand: AuthenticatedCommand {
         abstract: "Get the bitrise.yml of a build"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildBitriseYmlShow.Request(appSlug: appSlug, buildSlug: buildSlug)

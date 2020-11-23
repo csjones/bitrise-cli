@@ -13,10 +13,9 @@ struct ProvisioningProfileShowCommand: AuthenticatedCommand {
         abstract: "Get a specific provisioning profile"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var provisioningProfileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileShow.Request(appSlug: appSlug, provisioningProfileSlug: provisioningProfileSlug)

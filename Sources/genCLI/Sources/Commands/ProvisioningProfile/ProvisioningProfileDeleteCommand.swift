@@ -13,10 +13,9 @@ struct ProvisioningProfileDeleteCommand: AuthenticatedCommand {
         abstract: "Delete a provisioning profile"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var provisioningProfileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileDelete.Request(appSlug: appSlug, provisioningProfileSlug: provisioningProfileSlug)

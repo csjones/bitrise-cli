@@ -11,6 +11,6 @@ struct AuthOptions: ParsableArguments {
     //     case apiTokenNotProvided
     // }
 
-    @Option personalAccessToken: String?
     @Option addonAuthToken: String?
+    @Option personalAccessToken: String?
 }

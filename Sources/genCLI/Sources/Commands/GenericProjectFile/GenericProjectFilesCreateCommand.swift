@@ -13,9 +13,8 @@ struct GenericProjectFilesCreateCommand: AuthenticatedCommand {
         abstract: "Create a generic project file"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.GenericProjectFile.GenericProjectFilesCreate.Request(appSlug: appSlug)

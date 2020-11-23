@@ -13,10 +13,9 @@ struct AvatarCandidatePromoteCommand: AuthenticatedCommand {
         abstract: "Promote an avatar candidate"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var avatarSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.AvatarCandidate.AvatarCandidatePromote.Request(appSlug: appSlug, avatarSlug: avatarSlug)

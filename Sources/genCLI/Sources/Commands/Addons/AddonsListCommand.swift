@@ -13,7 +13,6 @@ struct AddonsListCommand: AuthenticatedCommand {
         abstract: "Get list of available Bitrise addons"
     )
 
-
     @OptionGroup var auth: AuthOptions
 
     func run() throws {

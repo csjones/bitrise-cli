@@ -18,7 +18,7 @@ struct BuildsCommand: ParsableCommand {
             BuildLogCommand.self,
             BuildShowCommand.self,
             BuildTriggerCommand.self,
-            BuildWorkflowListCommand.self,
+            BuildWorkflowListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

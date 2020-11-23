@@ -13,9 +13,8 @@ struct AppleApiCredentialListCommand: AuthenticatedCommand {
         abstract: "List Apple API credentials for a specific user"
     )
 
-    @Argument var userSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var userSlug: String
 
     func run() throws {
         let request = API.AppleApiCredentials.AppleApiCredentialList.Request(userSlug: userSlug)

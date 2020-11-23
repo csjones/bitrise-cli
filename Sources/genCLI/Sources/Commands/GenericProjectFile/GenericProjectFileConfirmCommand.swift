@@ -13,10 +13,9 @@ struct GenericProjectFileConfirmCommand: AuthenticatedCommand {
         abstract: "Confirm a generic project file upload"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var genericProjectFileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.GenericProjectFile.GenericProjectFileConfirm.Request(appSlug: appSlug, genericProjectFileSlug: genericProjectFileSlug)

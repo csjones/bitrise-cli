@@ -13,10 +13,9 @@ struct BuildLogCommand: AuthenticatedCommand {
         abstract: "Get the build log of a build"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Builds.BuildLog.Request(appSlug: appSlug, buildSlug: buildSlug)

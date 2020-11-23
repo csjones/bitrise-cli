@@ -13,9 +13,8 @@ struct UserShowCommand: AuthenticatedCommand {
         abstract: "Get a specific user"
     )
 
-    @Argument var userSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var userSlug: String
 
     func run() throws {
         let request = API.User.UserShow.Request(userSlug: userSlug)

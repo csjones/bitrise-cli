@@ -11,7 +11,7 @@ struct ActivityCommand: ParsableCommand {
         commandName: "Activity",
         abstract: "",
         subcommands: [
-            ActivityListCommand.self,
+            ActivityListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

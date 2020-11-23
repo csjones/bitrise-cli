@@ -13,7 +13,7 @@ struct AvatarCandidateCommand: ParsableCommand {
         subcommands: [
             AvatarCandidateCreateCommand.self,
             AvatarCandidateListCommand.self,
-            AvatarCandidatePromoteCommand.self,
+            AvatarCandidatePromoteCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

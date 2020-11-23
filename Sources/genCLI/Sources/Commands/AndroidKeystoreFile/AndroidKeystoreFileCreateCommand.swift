@@ -13,9 +13,8 @@ struct AndroidKeystoreFileCreateCommand: AuthenticatedCommand {
         abstract: "Create an Android keystore file"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AndroidKeystoreFile.AndroidKeystoreFileCreate.Request(appSlug: appSlug)

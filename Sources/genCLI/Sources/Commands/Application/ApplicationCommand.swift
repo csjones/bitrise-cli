@@ -16,7 +16,7 @@ struct ApplicationCommand: ParsableCommand {
             AppListByOrganizationCommand.self,
             AppListByUserCommand.self,
             AppShowCommand.self,
-            BranchListCommand.self,
+            BranchListCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

@@ -13,9 +13,8 @@ struct BuildWorkflowListCommand: AuthenticatedCommand {
         abstract: "List the workflows of an app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.Builds.BuildWorkflowList.Request(appSlug: appSlug)

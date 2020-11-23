@@ -13,9 +13,8 @@ struct AppFinishCommand: AuthenticatedCommand {
         abstract: "Save the application at the end of the app registration process"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.AppSetup.AppFinish.Request(appSlug: appSlug)

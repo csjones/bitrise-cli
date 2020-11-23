@@ -13,10 +13,9 @@ struct GenericProjectFileShowCommand: AuthenticatedCommand {
         abstract: "Get a specific generic project file"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var genericProjectFileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.GenericProjectFile.GenericProjectFileShow.Request(appSlug: appSlug, genericProjectFileSlug: genericProjectFileSlug)

@@ -13,10 +13,9 @@ struct GenericProjectFileUpdateCommand: AuthenticatedCommand {
         abstract: "Update a generic project file"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var genericProjectFileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.GenericProjectFile.GenericProjectFileUpdate.Request(appSlug: appSlug, genericProjectFileSlug: genericProjectFileSlug)

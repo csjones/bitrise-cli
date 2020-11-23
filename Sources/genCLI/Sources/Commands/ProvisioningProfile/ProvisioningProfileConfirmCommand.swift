@@ -13,10 +13,9 @@ struct ProvisioningProfileConfirmCommand: AuthenticatedCommand {
         abstract: "Confirm a provisioning profile upload"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var provisioningProfileSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.ProvisioningProfile.ProvisioningProfileConfirm.Request(appSlug: appSlug, provisioningProfileSlug: provisioningProfileSlug)

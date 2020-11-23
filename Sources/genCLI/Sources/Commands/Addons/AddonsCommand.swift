@@ -15,7 +15,7 @@ struct AddonsCommand: ParsableCommand {
             AddonListByOrganizationCommand.self,
             AddonListByUserCommand.self,
             AddonsListCommand.self,
-            AddonsShowCommand.self,
+            AddonsShowCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

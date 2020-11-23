@@ -12,7 +12,7 @@ struct OrganizationsCommand: ParsableCommand {
         abstract: "",
         subcommands: [
             OrgListCommand.self,
-            OrgShowCommand.self,
+            OrgShowCommand.self
         ]
         // defaultSubcommand: AppListCommand.self
     )

@@ -13,9 +13,8 @@ struct OutgoingWebhookCreateCommand: AuthenticatedCommand {
         abstract: "Create an outgoing webhook for an app"
     )
 
-    @Argument var appSlug: String
-
     @OptionGroup var auth: AuthOptions
+    @Argument var appSlug: String
 
     func run() throws {
         let request = API.OutgoingWebhook.OutgoingWebhookCreate.Request(appSlug: appSlug)

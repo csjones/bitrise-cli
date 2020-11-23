@@ -13,7 +13,6 @@ struct OrgListCommand: AuthenticatedCommand {
         abstract: "List the organizations that the user is part of"
     )
 
-
     @OptionGroup var auth: AuthOptions
 
     func run() throws {

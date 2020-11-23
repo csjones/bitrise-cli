@@ -13,10 +13,9 @@ struct ActivityListCommand: AuthenticatedCommand {
         abstract: "Get list of Bitrise activity events"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Option var next: String?
     @Option var limit: Int?
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.Activity.ActivityList.Request(next: next, limit: limit)

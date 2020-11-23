@@ -13,10 +13,9 @@ struct BuildRequestUpdateCommand: AuthenticatedCommand {
         abstract: "Update a build request"
     )
 
+    @OptionGroup var auth: AuthOptions
     @Argument var appSlug: String
     @Argument var buildRequestSlug: String
-
-    @OptionGroup var auth: AuthOptions
 
     func run() throws {
         let request = API.BuildRequest.BuildRequestUpdate.Request(appSlug: appSlug, buildRequestSlug: buildRequestSlug)
