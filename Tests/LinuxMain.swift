@@ -1,7 +1,7 @@
 import XCTest
 
-import bitrise_cliTests
+import BitriseCLITests
 
 var tests = [XCTestCaseEntry]()
-tests += bitrise_cliTests.allTests()
+tests += BitriseCLITests.allTests()
 XCTMain(tests)

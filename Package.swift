@@ -5,21 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "bitrise-cli",
+    platforms: [
+        .macOS(.v10_15)
+    ],
     products: [
         .executable(
-            name: "bitrise-cli",
+            name: "br",
             targets: [
-                "bitrise-cli",
-                "bitrise-api"
+                "ApplicationEntryPoint"
             ]
         )
     ],
     dependencies: [
-        .package(
-            name: "Alamofire",
-            url: "https://github.com/Alamofire/Alamofire.git",
-            from: "4.9.0"
-        ),
         .package(
             name: "swift-argument-parser",
             url: "https://github.com/apple/swift-argument-parser.git",
@@ -28,23 +25,27 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "bitrise-cli",
+            name: "ApplicationEntryPoint",
             dependencies: [
-                .target(name: "bitrise-api"),
+                "BitriseCLI"
+            ]
+        ),
+        .target(
+            name: "BitriseCLI",
+            dependencies: [
+                .target(name: "BitriseAPI"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ]
         ),
         .target(
-            name: "bitrise-api",
-            dependencies: [
-                "Alamofire"
-            ],
-            path: "Sources/bitrise-api/Sources"
+            name: "BitriseAPI",
+            dependencies: [],
+            path: "Sources/BitriseAPI/Sources"
         ),
         .testTarget(
-            name: "bitrise-cliTests",
+            name: "BitriseCLITests",
             dependencies: [
-                "bitrise-cli"
+                "BitriseCLI"
             ]
         ),
     ]
