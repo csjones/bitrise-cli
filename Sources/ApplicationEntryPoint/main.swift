@@ -1,3 +1,3 @@
 import BitriseCLI
 
-BitriseCLI.main()
+BitriseCLICommand.main()

@@ -17,11 +17,6 @@ let package = Package(
         )
     ],
     dependencies: [
-//        .package(
-//            name: "Alamofire",
-//            url: "https://github.com/Alamofire/Alamofire.git",
-//            from: "4.9.0"
-//        ),
         .package(
             name: "swift-argument-parser",
             url: "https://github.com/apple/swift-argument-parser.git",
@@ -44,9 +39,7 @@ let package = Package(
         ),
         .target(
             name: "BitriseAPI",
-            dependencies: [
-//                "Alamofire"
-            ],
+            dependencies: [],
             path: "Sources/BitriseAPI/Sources"
         ),
         .testTarget(
