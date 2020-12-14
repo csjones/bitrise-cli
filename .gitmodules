@@ -1,0 +1,3 @@
+[submodule "Vendor/SwagGen-templates"]
+	path = Vendor/SwagGen-templates
+	url = https://github.com/csjones/SwagGen-templates
