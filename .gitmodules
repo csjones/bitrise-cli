@@ -1,3 +1,6 @@
 [submodule "Vendor/SwagGen-templates"]
 	path = Vendor/SwagGen-templates
 	url = https://github.com/csjones/SwagGen-templates
+[submodule "Vendor/bitrise-api-client"]
+	path = Vendor/bitrise-api-client
+	url = https://github.com/bitrise-io/bitrise-api-client
