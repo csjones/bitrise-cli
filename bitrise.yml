@@ -16,6 +16,7 @@ workflows:
         inputs:
         - content: |-
             #!/usr/bin/env bash
+
             # fail if any commands fails; debug log
 
             set -ex
@@ -30,13 +31,14 @@ workflows:
         inputs:
         - content: >-
             #!/usr/bin/env bash
+
             # fail if any commands fails; debug log
 
             set -ex
 
             curl "https://converter.swagger.io/api/convert?url=https://api-docs.bitrise.io/docs/swagger.json" -H "Accept: application/json" -o ./openapi.json
 
-            swaggen generate openapi.json -d Sources/BitriseCLI -c all -t templates/CLI/template.yml -o "name:BitriseCLI" -o "commandProtocol:AuthenticatedCommand"
+            swaggen generate openapi.json -d Sources/BitriseCLI -c all -t Vendor/SwagGen-templates/templates/CLI/template.yml -o "name:BitriseCLI" -o "commandProtocol:AuthenticatedCommand"
 
             swift build --product br
         title: SwagGen
