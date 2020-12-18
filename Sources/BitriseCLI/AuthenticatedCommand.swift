@@ -13,12 +13,12 @@ protocol AuthenticatedCommand: ParsableCommand {
 
 extension AuthenticatedCommand {
     var client: APIClient {
-        if let personalAccessToken = auth.personalAccessToken {
-            APIClient.default.defaultHeaders["Authorization"] = personalAccessToken
-        }
-
         if let addonAuthToken = auth.addonAuthToken {
             APIClient.default.defaultHeaders["Bitrise-Addon-Auth-Token"] = addonAuthToken
+        }
+
+        if let personalAccessToken = auth.personalAccessToken {
+            APIClient.default.defaultHeaders["Authorization"] = personalAccessToken
         }
 
         return APIClient.default

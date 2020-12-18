@@ -7,6 +7,6 @@ import ArgumentParser
 import BitriseAPI
 
 struct AuthOptions: ParsableArguments {
-    @Option var personalAccessToken: String?
     @Option var addonAuthToken: String?
+    @Option var personalAccessToken: String?
 }
