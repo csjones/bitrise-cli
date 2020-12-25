@@ -1,52 +1,45 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.1
 
 import PackageDescription
 
 let package = Package(
-    name: "bitrise-cli",
+    name: "Bitrise",
     platforms: [
-        .macOS(.v10_15)
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6),
     ],
     products: [
-        .executable(
-            name: "br",
-            targets: [
-                "ApplicationEntryPoint"
-            ]
-        )
+        .executable(name: "BitriseCLI", targets: ["ApplicationEntryPoint"]),
+        .library(name: "BitriseAPI", targets: ["API"])
     ],
     dependencies: [
         .package(
-            name: "swift-argument-parser",
+            // name: "swift-argument-parser",
             url: "https://github.com/apple/swift-argument-parser.git",
-            from: "0.3.1"
+            .exact("0.3.1")
         ),
     ],
     targets: [
         .target(
             name: "ApplicationEntryPoint",
             dependencies: [
-                "BitriseCLI"
+                "CLI"
             ]
         ),
         .target(
-            name: "BitriseCLI",
+            name: "CLI",
             dependencies: [
-                .target(name: "BitriseAPI"),
+                .target(name: "API"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ]
         ),
         .target(
-            name: "BitriseAPI",
-            dependencies: [],
-            path: "Sources/BitriseAPI/Sources"
-        ),
-        .testTarget(
-            name: "BitriseCLITests",
+            name: "API",
             dependencies: [
-                "BitriseCLI"
-            ]
+            ],
+            path: "Sources/API"
         ),
     ]
 )
