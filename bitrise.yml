@@ -3,7 +3,7 @@ format_version: '8'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: other
 trigger_map:
-- push_branch: "*"
+- push_branch: "main"
   workflow: primary
 - pull_request_source_branch: "*"
   workflow: primary
@@ -32,6 +32,7 @@ workflows:
             set -ex
 
             curl "https://converter.swagger.io/api/convert?url=https://api-docs.bitrise.io/docs/swagger.json" -H "Accept: application/json" -o ./openapi.json
+            rm -rf Sources
             swaggen generate openapi.json -d . -c none -t Vendor/SwagGen-templates/templates/Combine+CLI/template.yml -o "name:Bitrise" -o "cliName:BitriseCLI" -o "apiName:BitriseAPI"
             swift build --product BitriseCLI
         title: SwagGen
